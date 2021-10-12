@@ -25,7 +25,7 @@ Most of the people going to the gym loved it and said that their workouts were b
 - Add history to queue
 - Create **playlist** from queue
 
-![Music Player Screenshot](https://github.com/LuxABrax/GymDJ/tree/main/gym-dj/public/gymdj.jpg?raw=true)
+![Music Player Screenshot](https://github.com/LuxABrax/GymDJ/blob/main/gym-dj/public/gymdj.jpg?raw=true)
 
 ## Scripts
 
