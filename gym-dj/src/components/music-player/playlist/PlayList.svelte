@@ -1,5 +1,9 @@
 <script>
-	import { audioStore, getPlaylistFromAudioStore, loadQueueFromPlaylist } from "../../stores/musicStore";
+	import {
+		audioStore,
+		getPlaylistFromAudioStore,
+		loadQueueFromPlaylist,
+	} from "../../../stores/musicStore";
 	import Fa from "svelte-fa";
 	import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
 	export let listIndex;
@@ -12,7 +16,9 @@
 </script>
 
 <li class="playlist-cont">
-	<button class="accordion" class:active={listIsShowing} on:click={showPlayList}>&#9776;{` ${playlist.name}`}</button>
+	<button class="accordion" class:active={listIsShowing} on:click={showPlayList}
+		>&#9776;{` ${playlist.name}`}</button
+	>
 	<button
 		class="play"
 		on:click={() => {
@@ -65,7 +71,8 @@
 	}
 	button.play {
 		// height: 20px;
-		background-color: #bbb;
+		background-color: transparent;
+		border: none;
 		position: absolute;
 		top: 0;
 		right: 0;

@@ -3,7 +3,11 @@
 	import Fa from "svelte-fa";
 	import { faHistory } from "@fortawesome/free-solid-svg-icons";
 
-	import { musicHistory, loadQueueFromHistory, mobileStore } from "../../stores/musicStore";
+	import {
+		musicHistory,
+		loadQueueFromHistory,
+		mobileStore,
+	} from "../../../stores/musicStore";
 
 	const dispatch = createEventDispatcher();
 
@@ -13,11 +17,16 @@
 		let hours = timeDate.getHours();
 		let mins = timeDate.getMinutes();
 		let secs = timeDate.getSeconds();
-		return `${(hours < 10 ? "0" : "") + hours}:${(mins < 10 ? "0" : "") + mins}:${(secs < 10 ? "0" : "") + secs}`;
+		return `${(hours < 10 ? "0" : "") + hours}:${
+			(mins < 10 ? "0" : "") + mins
+		}:${(secs < 10 ? "0" : "") + secs}`;
 	};
 </script>
 
-<div id="history-library" class={$mobileStore.active === "history" ? "active" : ""}>
+<div
+	id="history-library"
+	class={$mobileStore.active === "history" ? "active" : ""}
+>
 	<div class="historyList">
 		<div class="history-header">
 			<button
@@ -55,18 +64,8 @@
 </div>
 
 <style lang="scss">
-	@import "../../scss/include-media";
+	@import "../../../scss/include-media";
 	@include media("<=tablet") {
-		// #history-library {
-		// 	display: none;
-		// 	height: 0;
-		// 	width: 0;
-		// 	&.active {
-		// 		display: block;
-		// 		height: 100%;
-		// 		width: 100%;
-		// 	}
-		// }
 		.historyList {
 			max-height: 80vh;
 		}
@@ -97,14 +96,13 @@
 			align-items: center;
 			justify-content: center;
 			h2 {
-				padding: 0 0.4rem;
-				padding-top: 0.8rem;
+				margin-top: -0.5em;
+				margin-left: 4px;
 			}
 		}
 		ul {
 			flex: 0.8;
 			width: 96%;
-			max-height: 500px;
 			overflow-y: auto;
 			padding: 0.3rem;
 			background: #222;

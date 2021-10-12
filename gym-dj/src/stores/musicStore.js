@@ -15,29 +15,6 @@ export const moveStore = writable({
 	song: 0,
 	moveIndex2: 1,
 });
-export const handleTrackStore = writable({
-	handleActive: false,
-	currentTrackIndex: 0,
-	newTrackIndex: 0,
-});
-export const handleNewTrack = trackIndex => {
-	handleTrackStore.update(handleObj => {
-		handleObj.newTrackIndex = trackIndex;
-		handleObj.handleActive = true;
-		return { ...handleObj };
-	});
-};
-export const getNewTrackIndex = () => {
-	return get(handleTrackStore).newTrackIndex;
-};
-
-export const handleCurrentTrack = () => {
-	handleTrackStore.update(handleObj => {
-		handleObj.currentTrackIndex = handleObj.newTrackIndex;
-		handleObj.handleActive = false;
-		return { ...handleObj };
-	});
-};
 
 export const setActiveInMobile = active => {
 	mobileStore.update(cur => {

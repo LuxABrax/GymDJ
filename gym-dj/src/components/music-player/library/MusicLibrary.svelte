@@ -1,9 +1,31 @@
 <script>
 	import Fa from "svelte-fa";
 
-	import { faHeart, faPlay, faCompactDisc, faMusic, faRecordVinyl, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
-	import { audioStore, filteredAudioStore, setFilteredAudioStore, mobileStore, setActiveInMobile, musicQueue, addToQueue } from "../../stores/musicStore";
-	import { heartStore, findInHeartStore, removeFromHeartStore, addToHeartStore, addToHeartStoreFromArr, returnHeartedData } from "../../stores/heartStore";
+	import {
+		faHeart,
+		faPlay,
+		faCompactDisc,
+		faMusic,
+		faRecordVinyl,
+		faPlayCircle,
+	} from "@fortawesome/free-solid-svg-icons";
+	import {
+		audioStore,
+		filteredAudioStore,
+		setFilteredAudioStore,
+		mobileStore,
+		setActiveInMobile,
+		musicQueue,
+		addToQueue,
+	} from "../../../stores/musicStore";
+	import {
+		heartStore,
+		findInHeartStore,
+		removeFromHeartStore,
+		addToHeartStore,
+		addToHeartStoreFromArr,
+		returnHeartedData,
+	} from "../../../stores/heartStore";
 
 	import { createEventDispatcher } from "svelte";
 	let dispatch = createEventDispatcher();
@@ -18,8 +40,10 @@
 	const updateHearted = () => {};
 
 	const findSearchTerm = item => {
-		let inName = item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
-		let inArtist = item.artist.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
+		let inName =
+			item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
+		let inArtist =
+			item.artist.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
 		if (inName || inArtist) return item;
 	};
 	$: {
@@ -27,15 +51,20 @@
 			let hearted = returnHeartedData($audioStore);
 			filteredList = hearted.filter(item => findSearchTerm(item));
 		} else {
-			filteredList = $audioStore.filter(item => item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 || item.artist.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+			filteredList = $audioStore.filter(
+				item =>
+					item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
+					item.artist.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
+			);
 		}
 		setFilteredAudioStore(filteredList);
 	}
 </script>
 
-<div id="music-library" class={$mobileStore.active === "library" ? "active" : ""}>
-	<!-- <Fa icon={faRecordVinyl} />
-		<Fa icon={faPlayCircle} /> -->
+<div
+	id="music-library"
+	class={$mobileStore.active === "library" ? "active" : ""}
+>
 	<div class="musicList">
 		<div class="music-header">
 			<div class="title">
@@ -56,9 +85,13 @@
 				>
 					<Fa icon={faHeart} />
 				</button>
-				<input type="text" name="searchIn" bind:value={searchTerm} placeholder=" Search..." />
+				<input
+					type="text"
+					name="searchIn"
+					bind:value={searchTerm}
+					placeholder=" Search..."
+				/>
 			</div>
-			<!-- <label for="searchIn">Search </label> -->
 		</div>
 		<ul>
 			{#each $filteredAudioStore as { name, artist, url, index }, i}
@@ -71,7 +104,7 @@
 							}}
 							class={index == trackIndex ? "selected" : ""}
 						>
-							{`${index} ${name}`}
+							{`${name}`}
 						</h3>
 						<p>
 							{artist}
@@ -111,7 +144,7 @@
 </div>
 
 <style lang="scss">
-	@import "../../scss/include-media";
+	@import "../../../scss/include-media";
 	#music-library {
 		height: 100%;
 		padding: 0.2rem 0.4rem;
@@ -127,13 +160,9 @@
 		border-radius: 0 0 5px 5px;
 		background: #333;
 		margin: 0.5rem auto;
-		position: relative;
 		.music-header {
 			width: 100%;
-			// position: fixed;
-			// top: 0;
 			background: rgb(243, 242, 242);
-			// height: 6rem;
 			flex: 0.2;
 			margin: 0 auto;
 			display: flex;
@@ -152,7 +181,7 @@
 		ul {
 			flex: 0.8;
 			width: 96%;
-			max-height: 500px;
+
 			background: #222;
 			color: #ddd;
 			border-radius: 0 0 5px 5px;
@@ -206,16 +235,6 @@
 		#music-library {
 			padding: 0;
 		}
-		// #music-library {
-		// 	display: none;
-		// 	height: 0;
-		// 	width: 0;
-		// 	&.active {
-		// 		display: block;
-		// 		height: 80vh;
-		// 		width: 100%;
-		// 	}
-		// }
 		.musicList {
 			max-height: 80vh;
 		}

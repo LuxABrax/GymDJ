@@ -7,7 +7,7 @@
 </div>
 
 <style lang="scss">
-	@import "../../scss/include-media";
+	@import "../../../scss/include-media";
 	div {
 		text-align: center;
 	}

@@ -1,7 +1,17 @@
 <script>
 	import { createEventDispatcher } from "svelte";
 	import Fa from "svelte-fa";
-	import { faPlay, faBackward, faForward, faPause, faPauseCircle, faStepForward, faFastForward, faFastBackward, faStepBackward } from "@fortawesome/free-solid-svg-icons";
+	import {
+		faPlay,
+		faBackward,
+		faForward,
+		faPause,
+		faPauseCircle,
+		faStepForward,
+		faFastForward,
+		faFastBackward,
+		faStepBackward,
+	} from "@fortawesome/free-solid-svg-icons";
 
 	let dispatch = createEventDispatcher();
 
@@ -9,10 +19,6 @@
 </script>
 
 <div id="btn-cont">
-	<!-- <Fa icon={faPauseCircle} />
-	<Fa icon={faStepBackward} />
-	<Fa icon={faFastBackward} />
-	<Fa icon={faStepForward} /> -->
 	<button id="prev" on:click={() => dispatch("prev")}>
 		<Fa icon={faStepBackward} />
 	</button>
@@ -35,19 +41,25 @@
 		{/if}
 	</button>
 	<div class="mid foward">
-		<button id="forward" on:click={() => dispatch("forward", { multiplier: 1 })}>
+		<button
+			id="forward"
+			on:click={() => dispatch("forward", { multiplier: 1 })}
+		>
 			<Fa icon={faForward} />
 		</button>
-		<button id="forward3" on:click={() => dispatch("forward", { multiplier: 3 })}>
+		<button
+			id="forward3"
+			on:click={() => dispatch("forward", { multiplier: 3 })}
+		>
 			<Fa icon={faForward} />
 		</button>
-		<button id="forward6" on:click={() => dispatch("forward", { multiplier: 6 })}>
+		<button
+			id="forward6"
+			on:click={() => dispatch("forward", { multiplier: 6 })}
+		>
 			<Fa icon={faForward} />
 		</button>
 	</div>
-	<!-- <button id="forward" on:click={() => dispatch("forward", { multiplier: 6 })}>
-		<Fa icon={faFastForward} />
-	</button> -->
 	<button id="next" on:click={() => dispatch("next")}>
 		<Fa icon={faStepForward} />
 	</button>
@@ -96,7 +108,22 @@
 		background-color: transparent;
 	}
 
-	button img {
-		width: 100%;
+	@media screen and (max-width: 425px) {
+		button {
+			width: 32px;
+		}
+		#rewind6,
+		#forward6 {
+			transform: scale(0.8);
+		}
+		#rewind3,
+		#forward3 {
+			transform: scale(0.6);
+		}
+
+		#rewind,
+		#forward {
+			transform: scale(0.4);
+		}
 	}
 </style>

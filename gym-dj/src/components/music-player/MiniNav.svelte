@@ -1,7 +1,12 @@
 <script>
 	import { setActiveInMobile } from "../../stores/musicStore";
 	import Fa from "svelte-fa";
-	import { faMusic, faHistory, faPlayCircle, faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
+	import {
+		faMusic,
+		faHistory,
+		faPlayCircle,
+		faRecordVinyl,
+	} from "@fortawesome/free-solid-svg-icons";
 </script>
 
 <section id="phoneNav">
@@ -57,6 +62,7 @@
 			height: 8vh;
 			background-color: #0c0e0c;
 			padding: 0rem;
+
 			button {
 				margin: auto;
 				border-radius: 50%;

@@ -1,7 +1,12 @@
 <script>
 	import Fa from "svelte-fa";
-	import { faVolumeDown, faVolumeMute, faVolumeUp, faVolumeOff } from "@fortawesome/free-solid-svg-icons";
-	import { setVolumeStore, volumeStore } from "../../stores/volumeStore";
+	import {
+		faVolumeDown,
+		faVolumeMute,
+		faVolumeUp,
+		faVolumeOff,
+	} from "@fortawesome/free-solid-svg-icons";
+	import { setVolumeStore, volumeStore } from "../../../stores/volumeStore";
 	import { createEventDispatcher } from "svelte";
 
 	const dispatch = createEventDispatcher();

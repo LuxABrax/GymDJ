@@ -1,6 +1,12 @@
 <script>
 	import Fa from "svelte-fa";
-	import { faRecordVinyl, faChevronLeft, faChevronRight, faTimes, faArrowsAlt } from "@fortawesome/free-solid-svg-icons";
+	import {
+		faRecordVinyl,
+		faChevronLeft,
+		faChevronRight,
+		faTimes,
+		faArrowsAlt,
+	} from "@fortawesome/free-solid-svg-icons";
 	import {
 		isInHistory,
 		musicQueue,
@@ -17,7 +23,7 @@
 		filteredAudioStore,
 		findIndexInFilteredAudioWithTrackIndex,
 		getQueLen,
-	} from "../../stores/musicStore";
+	} from "../../../stores/musicStore";
 
 	let buttonsOn = [];
 	let btnState = true;
@@ -88,7 +94,13 @@
 						moveInQ(i, index);
 						console.log("moved: ", index);
 					}}
-					class={`${$moveStore.moveActive ? ($moveStore.moveIndex1 === index ? "moveFrom" : "moveTo") : ""}`}
+					class={`${
+						$moveStore.moveActive
+							? $moveStore.moveIndex1 === index
+								? "moveFrom"
+								: "moveTo"
+							: ""
+					}`}
 				>
 					{$audioStore[i].name}
 				</h4>
@@ -105,18 +117,7 @@
 								<Fa icon={faChevronRight} size="sm" color="white" />
 							</button>
 						{/if}
-						<!-- <button
-							class="qPos qL2"
-							on:click={() => {
-								console.log("buttom active");
-								// buttonsOn[0] == false ? turnAllButtonsOn(true) : turnAllButtonsOn(false);
-								console.log("butt", buttonsOn);
-								moveInQ(i, index);
-								console.log("moved: ", index);
-							}}
-						>
-							<Fa icon={faArrowsAlt} size="lg" color={`${$moveStore.moveActive ? ($moveStore.moveIndex1 === index ? "green" : "yellow") : "white"}`} />
-						</button> -->
+
 						<button
 							class="qRem"
 							on:click={() => {
@@ -133,7 +134,7 @@
 {/if}
 
 <style lang="scss">
-	@import "../../scss/include-media";
+	@import "../../../scss/include-media";
 	.queue-header {
 		max-height: 8vh;
 		button {
@@ -147,7 +148,7 @@
 	.queueM {
 		margin: 0.2rem;
 		padding: 0.8rem;
-		min-height: 50%;
+
 		max-height: 50vh;
 		overflow: auto;
 		display: flex;
@@ -209,7 +210,7 @@
 			li {
 				width: 100%;
 				min-height: 1.8rem;
-				flex: 0.3;
+				// flex: 0.3;
 				margin: 0 auto;
 				padding: 0;
 				h4 {
@@ -259,10 +260,6 @@
 			padding: 0.2rem;
 			background-color: transparent;
 		}
-		// &.qR {
-		// 	right: 0.2rem;
-		// 	background-color: transparent;
-		// }
 	}
 	@include media(">tablet", "<1240px") {
 		.queueM {
